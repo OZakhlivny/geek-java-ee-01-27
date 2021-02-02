@@ -1,0 +1,17 @@
+13:24:39,832 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 78) ISPN000128: Infinispan version: Infinispan 'Corona Extra' 11.0.8.Final
+13:24:39,917 INFO  [org.infinispan.CONFIG] (MSC service thread 1-3) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+13:24:39,919 INFO  [org.infinispan.CONFIG] (MSC service thread 1-3) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+13:24:40,082 INFO  [org.infinispan.PERSISTENCE] (ServerService Thread Pool -- 78) ISPN000556: Starting user marshaller 'org.wildfly.clustering.infinispan.spi.marshalling.InfinispanProtoStreamMarshaller'
+13:24:40,385 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 78) WFLYCLINF0002: Started http-remoting-connector cache from ejb container
+13:24:40,578 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 78) WFLYUT0021: Registered web context: '/firstapp' for server 'default-server'
+13:24:40,698 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0010: Deployed "firstapp.war" (runtime-name : "firstapp.war")
+13:24:40,798 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0212: Resuming server
+13:24:40,805 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly Full 22.0.0.Final (WildFly Core 14.0.0.Final) started in 9131ms - Started 419 of 621 services (350 services are lazy, passive or on-demand)
+13:24:40,809 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://127.0.0.1:9990/management
+13:24:40,809 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://127.0.0.1:9990
+14:58:04,178 INFO  [org.jboss.as.repository] (management-handler-thread - 1) WFLYDR0001: Content added at location /Library/wildfly-22.0.0.Final/standalone/data/content/40/8983d910f9af8930505160d420df109da37896/content
+14:58:04,189 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) WFLYSRV0027: Starting deployment of "first-web-app.war" (runtime-name: "first-web-app.war")
+14:58:04,682 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 78) WFLYUT0021: Registered web context: '/first-web-app' for server 'default-server'
+14:58:04,821 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV0010: Deployed "first-web-app.war" (runtime-name : "first-web-app.war")
+15:03:08,998 INFO  [ru.geekbrains.FirstServlet] (default task-2) FirstServlet is initialized.
+15:03:08,998 INFO  [ru.geekbrains.FirstServlet] (default task-2) New request to FirstServlet.
