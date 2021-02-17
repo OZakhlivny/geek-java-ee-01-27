@@ -1,0 +1,6 @@
+<%@ page pageEncoding="UTF-8" %>
+<ul style="list-style-type: none">
+    <li style="display: inline-block"><a href="category">Category</a></li>
+    <li style="display: inline-block"><a href="product">Products</a></li>
+    <li style="display: inline-block"><a href="user">Users</a></li>
+</ul>
