@@ -1,0 +1,62 @@
+<html lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:include src="/WEB-INF/header.xhtml" />
+
+<h:body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">EShop</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">List</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row py-2">
+            <div class="col-12">
+                <h:form>
+                    <input type="hidden" id="id" name="id"/>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <h:inputText styleClass="form-control" id="name"
+                                     value="#{productController.product.name}"
+                                     placeholder="Enter name"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <h:inputText styleClass="form-control" id="description"
+                                     value="#{productController.product.description}"
+                                     placeholder="Enter description"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Price</label>
+                        <h:inputText p:type="number" styleClass="form-control" id="price"
+                                     value="#{productController.product.price}"
+                                     placeholder="Enter price"/>
+                    </div>
+                    <h:commandButton value="Submit" styleClass="btn btn-primary"
+                                     action="#{productController.saveProduct()}"/>
+                </h:form>
+            </div>
+        </div>
+    </div>
+
+    <ui:include src="/WEB-INF/folder.xhtml" />
+
+</h:body>
+
+</html>

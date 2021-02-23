@@ -1,0 +1,56 @@
+<html lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:include src="/WEB-INF/header.xhtml" />
+
+<h:body>
+
+    <ui:include src="/WEB-INF/navigation.xhtml" />
+
+    <div class="container">
+        <div class="row py-2">
+            <h:form id="categoryForm">
+                <div class="col-12">
+                    <h:commandButton value="Add Category" styleClass="btn btn-primary"
+                                     action="#{categoryController.createCategory()}"/>
+                </div>
+
+                <div class="col-12">
+                    <h:dataTable value="#{categoryController.allCategories}" var="category"
+                                 styleClass="table table-bordered my-2">
+                        <h:column>
+                            <f:facet name="header">Id</f:facet>
+                            #{category.id}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Name</f:facet>
+                            #{category.name}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Description</f:facet>
+                            #{category.description}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Actions</f:facet>
+
+                            <h:commandButton value="Edit" styleClass="btn btn-success"
+                                             action="#{categoryController.editCategory(category)}"/>
+                            <h:commandButton value="Delete" styleClass="btn btn-danger"
+                                             action="#{categoryController.deleteCategory(category)}">
+                                <f:ajax event="click" render="categoryForm"/>
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+
+                </div>
+
+            </h:form>
+        </div>
+    </div>
+
+    <ui:include src="/WEB-INF/folder.xhtml" />
+</h:body>
+
+</html>
