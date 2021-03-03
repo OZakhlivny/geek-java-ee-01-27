@@ -8,22 +8,7 @@
 
 <h:body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">EShop</a>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">List</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <ui:include src="/WEB-INF/navigation.xhtml" />
 
     <div class="container">
         <div class="row py-2">
@@ -44,6 +29,8 @@
                     </div>
                     <h:commandButton value="Submit" styleClass="btn btn-primary"
                                      action="#{categoryController.saveCategory()}"/>
+                    <h:commandButton value="Cancel" styleClass="btn btn-danger"
+                                     onclick="history.back(); return false;"/>
                 </h:form>
             </div>
         </div>

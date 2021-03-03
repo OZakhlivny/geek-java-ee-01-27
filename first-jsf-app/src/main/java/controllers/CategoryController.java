@@ -4,6 +4,7 @@ import entities.Category;
 import repositories.CategoryRepository;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -15,6 +16,7 @@ public class CategoryController implements Serializable {
     @Inject
     private CategoryRepository categoryRepository;
     private Category category;
+    private List<Category> categories;
 
     public Category getCategory() {
         return category;
@@ -29,13 +31,17 @@ public class CategoryController implements Serializable {
         return "/category_form.xhtml?faces-redirect-true";
     }
 
+    public void preloadData(ComponentSystemEvent componentSystemEvent) {
+        categories = categoryRepository.findAll();
+    }
+
     public List<Category> getAllCategories() {
-        return categoryRepository.findAll();
+        return categories;
     }
 
     public String editCategory(Category category) {
         this.category = category;
-        return "/category_form.xhtml?faces-redirect-true";
+        return "/category_form.xhtml?faces-redirect=true";
     }
 
     public void deleteCategory(Category category) {
@@ -44,6 +50,6 @@ public class CategoryController implements Serializable {
 
     public String saveCategory() {
         categoryRepository.saveOrUpdate(category);
-        return "/category.xhtml?faces-redirect-true";
+        return "/category.xhtml?faces-redirect=true";
     }
 }

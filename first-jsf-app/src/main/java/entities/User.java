@@ -1,8 +1,23 @@
 package entities;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "users")
+@NamedQueries({
+        @NamedQuery(name = "findAllUsers", query = "from User"),
+        @NamedQuery(name = "countAllUsers", query = "select count(*) from User"),
+        @NamedQuery(name = "deleteByIdUser", query = "delete from User u where u.id = :id")
+})
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String name;
+
+    @Column
     private String email;
 
     public User() {
