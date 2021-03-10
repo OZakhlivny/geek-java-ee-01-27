@@ -31,6 +31,7 @@ public class User {
         this.email = email;
     }
 
+
     public User(UserDto userDto){
         this(userDto.getId(), userDto.getName(), userDto.getEmail());
     }

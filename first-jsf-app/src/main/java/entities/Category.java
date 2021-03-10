@@ -35,6 +35,7 @@ public class Category {
         this.description = description;
     }
 
+
     public Category(CategoryDto categoryDto){
         this(categoryDto.getId(), categoryDto.getName(), categoryDto.getDescription());
     }

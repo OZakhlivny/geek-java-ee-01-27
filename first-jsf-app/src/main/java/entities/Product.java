@@ -42,6 +42,7 @@ public class Product {
         this.category = category;
     }
 
+
     public Product(ProductDto productDto, Category category){
         this(productDto.getId(), productDto.getName(), productDto.getDescription(), productDto.getPrice(), category);
     }

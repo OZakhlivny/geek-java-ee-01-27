@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+
 @Stateless
 public class CategoryRepository {
     private static final Logger logger = LoggerFactory.getLogger(ProductRepository.class);

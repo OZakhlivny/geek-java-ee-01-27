@@ -13,6 +13,7 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
+
 @Named
 @SessionScoped
 public class ProductController implements Serializable {
