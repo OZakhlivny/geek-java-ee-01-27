@@ -1,12 +1,12 @@
 package controllers;
 
 
-import entities.User;
-import repositories.UserRepository;
+import dto.UserDto;
+import services.UserService;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ComponentSystemEvent;
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -14,43 +14,43 @@ import java.util.List;
 @Named
 @SessionScoped
 public class UserController implements Serializable {
-    @Inject
-    private UserRepository userRepository;
-    private User user;
-    private List<User> users;
+    @EJB
+    private UserService userService;
+    private UserDto user;
+    private List<UserDto> users;
 
-    public User getUser() {
+    public UserDto getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserDto user) {
         this.user = user;
     }
 
     public String createUser() {
-        this.user = new User();
+        this.user = new UserDto();
         return "/user_form.xhtml?faces-redirect=true";
     }
 
     public void preloadData(ComponentSystemEvent componentSystemEvent) {
-        users = userRepository.findAll();
+        users = userService.findAll();
     }
 
-    public List<User> getAllUsers() {
+    public List<UserDto> getAllUsers() {
         return users;
     }
 
-    public String editUser(User user) {
+    public String editUser(UserDto user) {
         this.user = user;
         return "/user_form.xhtml?faces-redirect=true";
     }
 
-    public void deleteUser(User user) {
-        userRepository.deleteById(user.getId());
+    public void deleteUser(UserDto user) {
+        userService.deleteById(user.getId());
     }
 
     public String saveUser() {
-        userRepository.saveOrUpdate(user);
+        userService.saveOrUpdate(user);
         return "/user.xhtml?faces-redirect=true";
     }
 }

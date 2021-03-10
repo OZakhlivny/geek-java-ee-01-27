@@ -1,6 +1,9 @@
 package entities;
 
+import dto.CategoryDto;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "categories")
@@ -21,12 +24,19 @@ public class Category {
     @Column(length = 1024)
     private String description;
 
+    @OneToMany(mappedBy = "category")
+    private List<Product> products;
+
     public Category(){}
 
     public Category(Long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
+    }
+
+    public Category(CategoryDto categoryDto){
+        this(categoryDto.getId(), categoryDto.getName(), categoryDto.getDescription());
     }
 
     public Long getId() {
@@ -51,5 +61,13 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

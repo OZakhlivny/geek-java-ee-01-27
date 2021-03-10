@@ -1,11 +1,11 @@
 package controllers;
 
-import entities.Category;
-import repositories.CategoryRepository;
+import dto.CategoryDto;
+import services.CategoryService;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ComponentSystemEvent;
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -13,43 +13,44 @@ import java.util.List;
 @Named
 @SessionScoped
 public class CategoryController implements Serializable {
-    @Inject
-    private CategoryRepository categoryRepository;
-    private Category category;
-    private List<Category> categories;
+    @EJB
+    private CategoryService categoryService;
 
-    public Category getCategory() {
+    private CategoryDto category;
+    private List<CategoryDto> categories;
+
+    public CategoryDto getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(CategoryDto category) {
         this.category = category;
     }
 
     public String createCategory() {
-        this.category = new Category();
-        return "/category_form.xhtml?faces-redirect-true";
+        this.category = new CategoryDto();
+        return "/category_form.xhtml?faces-redirect=true";
     }
 
     public void preloadData(ComponentSystemEvent componentSystemEvent) {
-        categories = categoryRepository.findAll();
+        categories = categoryService.findAll();
     }
 
-    public List<Category> getAllCategories() {
+    public List<CategoryDto> getAllCategories() {
         return categories;
     }
 
-    public String editCategory(Category category) {
+    public String editCategory(CategoryDto category) {
         this.category = category;
         return "/category_form.xhtml?faces-redirect=true";
     }
 
-    public void deleteCategory(Category category) {
-        categoryRepository.deleteById(category.getId());
+    public void deleteCategory(CategoryDto category) {
+        categoryService.deleteById(category.getId());
     }
 
     public String saveCategory() {
-        categoryRepository.saveOrUpdate(category);
+        categoryService.saveOrUpdate(category);
         return "/category.xhtml?faces-redirect=true";
     }
 }

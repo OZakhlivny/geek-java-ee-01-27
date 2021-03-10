@@ -1,5 +1,7 @@
 package entities;
 
+import dto.ProductDto;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -38,6 +40,10 @@ public class Product {
         this.description = description;
         this.price = price;
         this.category = category;
+    }
+
+    public Product(ProductDto productDto, Category category){
+        this(productDto.getId(), productDto.getName(), productDto.getDescription(), productDto.getPrice(), category);
     }
 
     public Long getId() {

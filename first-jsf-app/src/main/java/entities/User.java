@@ -1,5 +1,7 @@
 package entities;
 
+import dto.UserDto;
+
 import javax.persistence.*;
 
 @Entity
@@ -27,6 +29,10 @@ public class User {
         this.id = id;
         this.name = name;
         this.email = email;
+    }
+
+    public User(UserDto userDto){
+        this(userDto.getId(), userDto.getName(), userDto.getEmail());
     }
 
     public Long getId() {

@@ -35,24 +35,24 @@
 
                 <div class="col-12">
                     <h:dataTable value="#{productController.allProducts}" var="product"
-                                 styleClass="table table-bordered my-2" rowClasses="#{filter==null || filter == product.category.id}">
-                        <h:column rendered="#{filter==0 || filter == product.category.id}">
+                                 styleClass="table table-bordered my-2">
+                        <h:column rendered="#{filter==0 || filter == product.categoryId}">
                             <f:facet name="header">Id</f:facet>
                             #{product.id}
                         </h:column>
-                        <h:column rendered="#{filter==0 || filter == product.category.id}">
+                        <h:column rendered="#{filter==0 || filter == product.categoryId}">
                             <f:facet name="header">Name</f:facet>
                             #{product.name}
                         </h:column>
-                        <h:column rendered="#{filter==0 || filter == product.category.id}">
+                        <h:column rendered="#{filter==0 || filter == product.categoryId}">
                             <f:facet name="header">Category</f:facet>
-                            #{product.category == null ? 'None' : product.category.name}
+                            #{product.categoryName == null ? 'None' : product.categoryName}
                         </h:column>
-                        <h:column rendered="#{filter==0 || filter == product.category.id}">
+                        <h:column rendered="#{filter==0 || filter == product.categoryId}">
                             <f:facet name="header">Description</f:facet>
                             #{product.description}
                         </h:column>
-                        <h:column rendered="#{filter==0 || filter == product.category.id}">
+                        <h:column rendered="#{filter==0 || filter == product.categoryId}">
                             <f:facet name="header">Price</f:facet>
                             #{product.price}
                         </h:column>

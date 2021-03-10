@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <label>Category</label>
                         <h:selectOneMenu styleClass="form-control" id="category"
-                                     value="#{productController.product.category.id}">
+                                     value="#{productController.product.categoryId}">
                             <c:forEach var="category" items="#{productController.allCategories}">
                                 <f:selectItem itemLabel="${category.name}" itemValue="${category.id}" />
                             </c:forEach>
