@@ -1,8 +1,9 @@
-package services;
+package ru.geekbrains.services;
 
-import dto.UserDto;
-import entities.User;
-import repositories.UserRepository;
+import ru.geekbrains.dto.UserDto;
+import ru.geekbrains.entities.User;
+import ru.geekbrains.repositories.UserRepository;
+import ru.geekbrains.rest.UserServiceRest;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Stateless
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService, UserServiceRest {
 
     @EJB
     private UserRepository userRepository;
@@ -43,5 +44,17 @@ public class UserServiceImpl implements UserService{
     @Override
     public Long countAll() {
         return userRepository.countAll();
+    }
+
+    @Override
+    public void insert(UserDto user) {
+        if(user.getId() != null) throw new IllegalArgumentException();
+        saveOrUpdate(user);
+    }
+
+    @Override
+    public void update(UserDto user) {
+        if(user.getId() == null) throw new IllegalArgumentException();
+        saveOrUpdate(user);
     }
 }

@@ -1,6 +1,6 @@
-package entities;
+package ru.geekbrains.entities;
 
-import dto.ProductDto;
+import ru.geekbrains.services.ProductDto;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -10,7 +10,9 @@ import java.math.BigDecimal;
 @NamedQueries({
         @NamedQuery(name = "findAllProducts", query = "from Product"),
         @NamedQuery(name = "countAllProducts", query = "select count(*) from Product"),
-        @NamedQuery(name = "deleteByIdProduct", query = "delete from Product p where p.id = :id")
+        @NamedQuery(name = "deleteByIdProduct", query = "delete from Product p where p.id = :id"),
+        @NamedQuery(name = "findByNameProduct", query = "from Product p where p.name = :name"),
+        @NamedQuery(name = "findByCategoryId", query = "from Product p where p.category.id = :category_id")
 })
 public class Product {
 

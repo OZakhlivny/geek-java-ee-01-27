@@ -1,5 +1,5 @@
-package repositories;
-import entities.Product;
+package ru.geekbrains.repositories;
+import ru.geekbrains.entities.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,6 +22,19 @@ public class ProductRepository {
 
     public Product findById(Long id) {
         return em.find(Product.class, id);
+    }
+
+    public Product findByName(String name){
+        System.out.println(name);
+        List<Product> resultQuery = em.createNamedQuery("findByNameProduct", Product.class)
+                                        .setParameter("name", name).getResultList();
+        if(resultQuery.isEmpty()) return null;
+        else return resultQuery.get(0);
+    }
+
+    public List<Product> findByCategoryId(Long categoryId){
+        return em.createNamedQuery("findByCategoryId", Product.class)
+                 .setParameter("category_id", categoryId).getResultList();
     }
 
     public void saveOrUpdate(Product product) {

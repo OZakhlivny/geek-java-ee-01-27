@@ -1,7 +1,5 @@
-package dto;
 
-import entities.Category;
-import entities.Product;
+package ru.geekbrains.services;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -22,18 +20,13 @@ public class ProductDto implements Serializable {
     public ProductDto() {
     }
 
-    public ProductDto(long id, String name, String description, BigDecimal price){
+    public ProductDto(long id, String name, String description, BigDecimal price, Long categoryId, String categoryName){
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
-    }
-
-    public ProductDto(Product product) {
-        this(product.getId(), product.getName(), product.getDescription(), product.getPrice());
-        Category category = product.getCategory();
-        categoryId = category != null ? category.getId() : null;
-        categoryName = category != null ? category.getName() : null;
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
     }
 
     public Long getId() {

@@ -1,5 +1,5 @@
-package repositories;
-import entities.User;
+package ru.geekbrains.repositories;
+import ru.geekbrains.entities.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

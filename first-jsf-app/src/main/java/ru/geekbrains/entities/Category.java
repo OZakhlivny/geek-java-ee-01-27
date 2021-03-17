@@ -1,6 +1,6 @@
-package entities;
+package ru.geekbrains.entities;
 
-import dto.CategoryDto;
+import ru.geekbrains.dto.CategoryDto;
 
 import javax.persistence.*;
 import java.util.List;

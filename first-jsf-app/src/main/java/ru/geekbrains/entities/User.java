@@ -1,6 +1,6 @@
-package entities;
+package ru.geekbrains.entities;
 
-import dto.UserDto;
+import ru.geekbrains.dto.UserDto;
 
 import javax.persistence.*;
 

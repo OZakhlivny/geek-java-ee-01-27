@@ -17,7 +17,9 @@
 
     <modules>
         <module>first-web-app</module>
+        <module>product-service-api</module>
         <module>first-jsf-app</module>
+        <module>remote-client</module>
     </modules>
 
 </project>

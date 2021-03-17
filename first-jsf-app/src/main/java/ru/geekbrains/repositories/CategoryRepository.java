@@ -1,5 +1,5 @@
-package repositories;
-import entities.Category;
+package ru.geekbrains.repositories;
+import ru.geekbrains.entities.Category;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
