@@ -3,6 +3,8 @@ package ru.geekbrains.entities;
 import ru.geekbrains.dto.UserDto;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -22,18 +24,33 @@ public class User {
     @Column
     private String email;
 
+    @Column(name = "login", unique = true, nullable = false)
+    private String login;
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
     public User() {
     }
 
-    public User(Long id, String name, String email) {
+    public User(Long id, String name, String email, String login, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.login = login;
+        this.password = password;
     }
 
-
     public User(UserDto userDto){
-        this(userDto.getId(), userDto.getName(), userDto.getEmail());
+        this(userDto.getId(), userDto.getName(), userDto.getEmail(), userDto.getLogin(), userDto.getPassword());
+        this.roles = new HashSet<>();
+        userDto.getRoles().forEach(r -> roles.add(new Role(r)));
     }
 
     public Long getId() {
@@ -58,5 +75,29 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

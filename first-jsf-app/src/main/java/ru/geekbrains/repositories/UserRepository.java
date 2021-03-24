@@ -25,9 +25,12 @@ public class UserRepository {
         return em.find(User.class, id);
     }
 
-    public void saveOrUpdate(User user) {
-        if (user.getId() == null) em.persist(user);
-        else em.merge(user);
+    public User saveOrUpdate(User user) {
+        if (user.getId() == null){
+            em.persist(user);
+            return user;
+        }
+        else return em.merge(user);
     }
 
     public void deleteById(Long id) {

@@ -18,17 +18,11 @@
                     <div class="form-group">
                         <label>Name</label>
                         <h:inputText styleClass="form-control" id="name"
-                                     value="#{userController.user.name}"
+                                     value="#{roleController.role.name}"
                                      placeholder="Enter name"/>
                     </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <h:inputText styleClass="form-control" id="email"
-                                     value="#{userController.user.email}"
-                                     placeholder="Enter email"/>
-                    </div>
                     <h:commandButton value="Submit" styleClass="btn btn-primary"
-                                     action="#{userController.saveUser()}"/>
+                                     action="#{roleController.saveRole()}"/>
                     <h:commandButton value="Cancel" styleClass="btn btn-danger"
                                      onclick="history.back(); return false;"/>
                 </h:form>

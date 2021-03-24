@@ -1,6 +1,6 @@
-package services;
+package ru.geekbrains.services;
 
-import dto.UserDto;
+import ru.geekbrains.dto.UserDto;
 
 import javax.ejb.Local;
 import java.util.List;

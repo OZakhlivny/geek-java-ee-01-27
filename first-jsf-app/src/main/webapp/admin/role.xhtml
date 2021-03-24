@@ -7,40 +7,38 @@
 
 <h:body>
 
-    <ui:include src="/WEB-INF/navigation.xhtml" />
-    <f:event listener="#{userController.preloadData}" type="preRenderView"/>
+    <ui:include src="/WEB-INF/navigation.xhtml" >
+        <ui:param name="pageName" value="Role"/>
+    </ui:include>
+    <f:event listener="#{roleController.preloadData}" type="preRenderView"/>
 
     <div class="container">
         <div class="row py-2">
-            <h:form id="userForm">
+            <h:form id="roleForm">
                 <div class="col-12">
-                    <h:commandButton value="Add User" styleClass="btn btn-primary"
-                                     action="#{userController.createUser()}"/>
+                    <h:commandButton value="Add Role" styleClass="btn btn-primary"
+                                     action="#{roleController.createRole()}"/>
                 </div>
 
                 <div class="col-12">
-                    <h:dataTable value="#{userController.allUsers}" var="user"
+                    <h:dataTable value="#{roleController.allRoles}" var="role"
                                  styleClass="table table-bordered my-2">
                         <h:column>
                             <f:facet name="header">Id</f:facet>
-                            #{user.id}
+                            #{role.id}
                         </h:column>
                         <h:column>
                             <f:facet name="header">Name</f:facet>
-                            #{user.name}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Email</f:facet>
-                            #{user.email}
+                            #{role.name}
                         </h:column>
                         <h:column>
                             <f:facet name="header">Actions</f:facet>
 
                             <h:commandButton value="Edit" styleClass="btn btn-success"
-                                             action="#{userController.editUser(user)}"/>
+                                             action="#{roleController.editRole(role)}"/>
                             <h:commandButton value="Delete" styleClass="btn btn-danger"
-                                             action="#{userController.deleteUser(user)}">
-                                <f:ajax event="click" render="userForm"/>
+                                             action="#{roleController.deleteRole(role)}">
+                                <f:ajax event="click" render="roleForm"/>
                             </h:commandButton>
                         </h:column>
                     </h:dataTable>

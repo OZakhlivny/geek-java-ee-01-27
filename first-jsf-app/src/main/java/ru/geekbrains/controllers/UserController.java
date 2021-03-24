@@ -1,7 +1,9 @@
-package controllers;
+package ru.geekbrains.controllers;
 
-import dto.UserDto;
-import services.UserService;
+import ru.geekbrains.dto.RoleDto;
+import ru.geekbrains.dto.UserDto;
+import ru.geekbrains.services.RoleService;
+import ru.geekbrains.services.UserService;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -15,8 +17,13 @@ import java.util.List;
 public class UserController implements Serializable {
     @EJB
     private UserService userService;
+
+    @EJB
+    private RoleService roleService;
+
     private UserDto user;
     private List<UserDto> users;
+    private List<RoleDto> roles;
 
     public UserDto getUser() {
         return user;
@@ -28,11 +35,16 @@ public class UserController implements Serializable {
 
     public String createUser() {
         this.user = new UserDto();
-        return "/user_form.xhtml?faces-redirect=true";
+        return "/admin/user_form.xhtml?faces-redirect=true";
     }
 
     public void preloadData(ComponentSystemEvent componentSystemEvent) {
+        roles = roleService.findAll();
         users = userService.findAll();
+    }
+
+    public List<RoleDto> getAllRoles(){
+        return roles;
     }
 
     public List<UserDto> getAllUsers() {
@@ -41,7 +53,7 @@ public class UserController implements Serializable {
 
     public String editUser(UserDto user) {
         this.user = user;
-        return "/user_form.xhtml?faces-redirect=true";
+        return "/admin/user_form.xhtml?faces-redirect=true";
     }
 
     public void deleteUser(UserDto user) {
@@ -50,6 +62,6 @@ public class UserController implements Serializable {
 
     public String saveUser() {
         userService.saveOrUpdate(user);
-        return "/user.xhtml?faces-redirect=true";
+        return "/admin/user.xhtml?faces-redirect=true";
     }
 }
