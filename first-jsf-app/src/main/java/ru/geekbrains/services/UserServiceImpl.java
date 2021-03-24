@@ -32,7 +32,8 @@ public class UserServiceImpl implements UserService, UserServiceRest {
     @TransactionAttribute
     @Override
     public void saveOrUpdate(UserDto user) {
-        userRepository.saveOrUpdate(new User(user));
+        User savedUser = userRepository.saveOrUpdate(new User(user));
+        user.setId(savedUser.getId());
     }
 
     @TransactionAttribute
